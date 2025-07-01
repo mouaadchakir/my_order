@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/', function () {
     return view('home');
@@ -28,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 });
 
 // Auth Routes
@@ -36,3 +41,18 @@ Route::post('register', [UserController::class, 'store'])->name('register.post')
 Route::get('login', [UserController::class, 'login'])->name('login');
 Route::post('login', [UserController::class, 'authenticate'])->name('login.post');
 Route::post('logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+Route::post('products', [ProductController::class, 'store'])->name('products.store');
+
+// Cart Routes
+Route::post('cart', [CartController::class, 'store'])->name('cart.store');
+Route::get('cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('cart/update', [CartController::class, 'update'])->name('cart.update');
+
+// Checkout Route
+Route::middleware('auth')->group(function () {
+    Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+});
