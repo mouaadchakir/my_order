@@ -28,7 +28,7 @@
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mosaic Borders</a>
                         </div>
                     </div>
-                    <a href="{{ route('made-to-measure') }}" class="hover:opacity-75">MADE-TO-MEASURE</a>
+                    <a href="{{ route('made-to-measure.create') }}" class="hover:opacity-75">MADE-TO-MEASURE</a>
                     <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
                         <a @mouseover="open = true" href="#" class="flex items-center hover:opacity-75">
                             ABOUT | FAQ
@@ -107,7 +107,7 @@
             <div x-show="mobileMenuOpen" x-transition class="md:hidden pb-4">
                 <nav class="flex flex-col space-y-4 text-xs font-medium text-[#4A5568]">
                     <a href="{{ route('products.zellige') }}" class="hover:opacity-75">PRODUCTS ZELLIGE</a>
-                    <a href="{{ route('made-to-measure') }}" class="hover:opacity-75">MADE-TO-MEASURE</a>
+                    <a href="{{ route('made-to-measure.create') }}" class="hover:opacity-75">MADE-TO-MEASURE</a>
                     <a href="{{ route('about') }}" class="hover:opacity-75">ABOUT US</a>
                     <a href="{{ route('faq') }}" class="hover:opacity-75">FAQ</a>
                     <div class="pt-4 mt-4 border-t border-gray-200 space-y-2">
@@ -144,7 +144,7 @@
                     <ul class="space-y-2 text-sm">
                         <li><a href="/" class="hover:underline">Home</a></li>
                         <li><a href="{{ route('products.zellige') }}" class="hover:underline">Products Zellige</a></li>
-                        <li><a href="{{ route('made-to-measure') }}" class="hover:underline">Made-to-Measure</a></li>
+                        <li><a href="{{ route('made-to-measure.create') }}" class="text-gray-800 hover:text-[#D4AF7A] transition">Made-to-Measure</a></li>
                         <li><a href="{{ route('about') }}" class="hover:underline">About Us</a></li>
                     </ul>
                 </div>
