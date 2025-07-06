@@ -33,52 +33,64 @@
     </div>
 
     {{-- Shop By Category Section --}}
-    <div class="container mx-auto px-4 py-16">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-800">Shop By Category</h2>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
-            {{-- Category Item 1 --}}
-            <div class="text-center group">
-                <div class="border border-gray-200 p-2 group-hover:shadow-lg transition-shadow">
-                    <img src="https://i.imgur.com/5i1S3tC.png" alt="Side Table" class="mx-auto mb-4">
+    <div class="bg-[#F8F5F2] py-16">
+        <div class="container mx-auto px-4" x-data="categoryCarousel()">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800">Shop By Category</h2>
+                <div class="flex items-center space-x-2">
+                    <a href="#" class="border border-gray-400 text-gray-800 py-2 px-6 hover:bg-gray-800 hover:text-white transition hidden sm:block">Discover All</a>
+                    <button @click="scroll('left')" class="border border-gray-300 p-3 hover:bg-gray-800 hover:text-white transition">&lt;</button>
+                    <button @click="scroll('right')" class="border border-gray-300 p-3 hover:bg-gray-800 hover:text-white transition">&gt;</button>
                 </div>
-                <h3 class="font-semibold mt-4">Side Tables</h3>
             </div>
 
-            {{-- Category Item 2 --}}
-            <div class="text-center group">
-                <div class="border border-gray-200 p-2 group-hover:shadow-lg transition-shadow">
-                    <img src="https://i.imgur.com/o2zZJvO.png" alt="Chair" class="mx-auto mb-4">
+            <div class="relative">
+                <div x-ref="container" class="flex overflow-x-auto space-x-6 pb-4 -mx-4 px-4 scrollbar-hide">
+                    @if(isset($categories))
+                        @foreach($categories as $category)
+                            @if($category->products->isNotEmpty() && $category->products->first()->images->isNotEmpty())
+                                @php
+                                    $product = $category->products->first();
+                                    $image = $product->images->first();
+                                @endphp
+                                <div class="flex-shrink-0 w-80 group">
+                                    <div class="bg-white border border-gray-200 p-6">
+                                        <div class="flex justify-between items-baseline mb-4">
+                                            <h3 class="font-semibold text-lg">{{ $category->name }}</h3>
+                                            <p class="text-sm text-gray-500">{{ $category->products_count }} items</p>
+                                        </div>
+                                        <a href="#" class="block mb-4 h-80 bg-gray-100">
+                                            <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                                        </a>
+                                        <a href="#" class="inline-block border border-gray-800 text-gray-800 py-2 px-6 hover:bg-gray-800 hover:text-white transition">DISCOVER</a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
-                <h3 class="font-semibold mt-4">Chairs</h3>
-            </div>
-
-            {{-- Category Item 3 --}}
-            <div class="text-center group">
-                <div class="border border-gray-200 p-2 group-hover:shadow-lg transition-shadow">
-                    <img src="https://i.imgur.com/rGk2Y2A.png" alt="Mosaic Fountain" class="mx-auto mb-4">
-                </div>
-                <h3 class="font-semibold mt-4">Mosaic Fountains</h3>
-            </div>
-
-            {{-- Category Item 4 --}}
-            <div class="text-center group">
-                <div class="border border-gray-200 p-2 group-hover:shadow-lg transition-shadow">
-                    <img src="https://i.imgur.com/k2gY1sI.png" alt="Mirror" class="mx-auto mb-4">
-                </div>
-                <h3 class="font-semibold mt-4">Mirrors</h3>
-            </div>
-
-            {{-- Category Item 5 --}}
-            <div class="text-center group">
-                <div class="border border-gray-200 p-2 group-hover:shadow-lg transition-shadow">
-                    <img src="https://i.imgur.com/sM4Z3hX.png" alt="Coffee Table" class="mx-auto mb-4">
-                </div>
-                <h3 class="font-semibold mt-4">Coffee Tables</h3>
             </div>
         </div>
     </div>
+
+    <script>
+        if (typeof categoryCarousel !== 'function') {
+            function categoryCarousel() {
+                return {
+                    scroll(direction) {
+                        const container = this.$refs.container;
+                        if (!container || !container.querySelector('.group')) return;
+                        const scrollAmount = container.querySelector('.group').clientWidth + 24; // Width of one item + space-x-6 (1.5rem = 24px)
+                        if (direction === 'left') {
+                            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                        } else {
+                            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     {{-- Moroccan Zellige Section --}}
     <div class="bg-[#F8F5F2] py-16">
         <div class="container mx-auto px-4">

@@ -37,7 +37,13 @@
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 w-16 h-16">
-                                        <img class="w-full h-full rounded-md object-cover" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" />
+                                        @if($product->image_path)
+                                            <img class="w-full h-full rounded-md object-cover" src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" />
+                                        @else
+                                            <div class="w-full h-full rounded-md bg-gray-200 flex items-center justify-center">
+                                                <span class="text-xs text-gray-500">No Image</span>
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="ml-4">
                                         <p class="text-gray-900 whitespace-no-wrap font-semibold">{{ $product->name }}</p>
@@ -47,6 +53,7 @@
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">${{ number_format($product->price, 2) }}</td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <a href="{{ route('admin.products.edit', $product) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                <a href="{{ route('admin.products.images.index', $product) }}" class="text-green-600 hover:text-green-900 ml-4">Manage Images</a>
                                 <form action="{{ route('admin.products.destroy', $product) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this product? This action cannot be undone.');">
                                     @csrf
                                     @method('DELETE')

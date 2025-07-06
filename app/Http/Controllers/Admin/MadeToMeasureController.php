@@ -17,10 +17,38 @@ class MadeToMeasureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $requests = MadeToMeasureRequest::latest()->paginate(10);
+        $query = MadeToMeasureRequest::query();
+
+        // Filter by search term (customer_name or email)
+        if ($search = $request->input('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('customer_name', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+
+        // Filter by status
+        if ($status = $request->input('status')) {
+            $query->where('status', $status);
+        }
+
+        $requests = $query->latest()->paginate(10)->withQueryString();
+
         return view('admin.made-to-measure.index', compact('requests'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $request = MadeToMeasureRequest::findOrFail($id);
+        return view('admin.made-to-measure.show', ['request' => $request]);
     }
 
     /**

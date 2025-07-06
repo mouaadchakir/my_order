@@ -9,15 +9,18 @@ class MadeToMeasureRequest extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
+        protected $fillable = [
+        'customer_name',
         'email',
         'phone',
         'product_id',
         'product_name',
+        'quantity',
+        'color',
         'width',
         'length',
         'notes',
         'status',
+        'file_path',
     ];
 }

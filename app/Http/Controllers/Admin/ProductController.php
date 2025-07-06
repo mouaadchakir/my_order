@@ -41,7 +41,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => $imagePath,
+            'image_path' => $imagePath,
         ]);
 
         return redirect()->route('admin.products.index')
@@ -68,11 +68,11 @@ class ProductController extends Controller
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $imagePath = $product->image;
+        $imagePath = $product->image_path;
         if ($request->hasFile('image')) {
             // Delete old image
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
+            if ($product->image_path) {
+                Storage::disk('public')->delete($product->image_path);
             }
             $imagePath = $request->file('image')->store('products', 'public');
         }
@@ -81,7 +81,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => $imagePath,
+            'image_path' => $imagePath,
         ]);
 
         return redirect()->route('admin.products.index')
@@ -94,8 +94,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         // Delete the product image from storage
-        if ($product->image) {
-            Storage::disk('public')->delete($product->image);
+        if ($product->image_path) {
+            Storage::disk('public')->delete($product->image_path);
         }
 
         $product->delete();

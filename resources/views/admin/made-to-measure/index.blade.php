@@ -17,6 +17,26 @@
             <p>There are currently no made-to-measure requests to display.</p>
         </div>
     @else
+        <div class="mb-4 p-4 bg-gray-100 rounded-lg">
+            <form action="{{ route('admin.requests.index') }}" method="GET" class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                <div class="flex-grow mb-2 sm:mb-0">
+                    <label for="search" class="sr-only">Search</label>
+                    <input type="text" name="search" id="search" placeholder="Search by name or email..." value="{{ request('search') }}" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div class="mb-2 sm:mb-0">
+                    <label for="status" class="sr-only">Status</label>
+                    <select name="status" id="status" class="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">All Statuses</option>
+                        <option value="New" {{ request('status') == 'New' ? 'selected' : '' }}>New</option>
+                        <option value="In Progress" {{ request('status') == 'In Progress' ? 'selected' : '' }}>In Progress</option>
+                        <option value="Completed" {{ request('status') == 'Completed' ? 'selected' : '' }}>Completed</option>
+                        <option value="Cancelled" {{ request('status') == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
+                    </select>
+                </div>
+                <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Filter</button>
+            </form>
+        </div>
+
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <table class="min-w-full leading-normal">
                 <thead>
@@ -26,7 +46,8 @@
                         <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Dimensions (cm)</th>
                         <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Date</th>
                         <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
-                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100"></th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Attachment</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,22 +90,34 @@
                                     <span class="relative">{{ $request->status }}</span>
                                 </span>
                             </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                @if($request->file_path)
+                                    <a href="{{ asset('storage/' . $request->file_path) }}" target="_blank" class="text-indigo-600 hover:text-indigo-900">
+                                        Download File
+                                    </a>
+                                @else
+                                    N/A
+                                @endif
+                            </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <form action="{{ route('admin.requests.update-status', $request->id) }}" method="POST">
-                                    @csrf
-                                    @method('PATCH')
-                                    <div class="flex items-center">
-                                        <select name="status" class="form-select appearance-none block w-full px-2 py-1 text-sm font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
-                                            <option value="New" @if($request->status == 'New') selected @endif>New</option>
-                                            <option value="In Progress" @if($request->status == 'In Progress') selected @endif>In Progress</option>
-                                            <option value="Completed" @if($request->status == 'Completed') selected @endif>Completed</option>
-                                            <option value="Cancelled" @if($request->status == 'Cancelled') selected @endif>Cancelled</option>
-                                        </select>
-                                        <button type="submit" class="ml-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-1 px-3 rounded text-xs">
-                                            Update
-                                        </button>
-                                    </div>
-                                </form>
+                                <div class="flex items-center space-x-4">
+                                    <a href="{{ route('admin.requests.show', $request->id) }}" class="text-indigo-600 hover:text-indigo-900 font-semibold whitespace-nowrap">View Details</a>
+                                    <form action="{{ route('admin.requests.update-status', $request->id) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <div class="flex items-center">
+                                            <select name="status" class="form-select appearance-none block w-full px-2 py-1 text-sm font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+                                                <option value="New" @if($request->status == 'New') selected @endif>New</option>
+                                                <option value="In Progress" @if($request->status == 'In Progress') selected @endif>In Progress</option>
+                                                <option value="Completed" @if($request->status == 'Completed') selected @endif>Completed</option>
+                                                <option value="Cancelled" @if($request->status == 'Cancelled') selected @endif>Cancelled</option>
+                                            </select>
+                                            <button type="submit" class="ml-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-1 px-3 rounded text-xs">
+                                                Update
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

@@ -9,13 +9,12 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\MadeToMeasureController as AdminMadeToMeasureController;
+use App\Http\Controllers\MyRequestsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MadeToMeasureController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/products/zellige', function () {
     return view('products.zellige');
@@ -37,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/my-requests', [MyRequestsController::class, 'index'])->name('my-requests.index');
 });
 
 // Auth Routes
@@ -75,5 +75,19 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     // Made to Measure Requests
     Route::get('/requests', [AdminMadeToMeasureController::class, 'index'])->name('requests.index');
-    Route::patch('/requests/{id}/update-status', [AdminMadeToMeasureController::class, 'updateStatus'])->name('requests.update-status');
+    Route::get('/requests/{id}', [AdminMadeToMeasureController::class, 'show'])->name('requests.show');
+        Route::patch('/requests/{id}/update-status', [AdminMadeToMeasureController::class, 'updateStatus'])->name('requests.update-status');
+
+    // Contact Messages
+        Route::get('/contacts', [App\Http\Controllers\Admin\ContactController::class, 'index'])->name('contacts.index');
+    Route::get('/contacts/{contact}', [App\Http\Controllers\Admin\ContactController::class, 'show'])->name('contacts.show');
+
+    // Product Images Management
+    Route::get('/products/{product}/images', [App\Http\Controllers\Admin\ProductImageController::class, 'index'])->name('products.images.index');
+    Route::post('/products/{product}/images', [App\Http\Controllers\Admin\ProductImageController::class, 'store'])->name('products.images.store');
+    Route::delete('/product-images/{productImage}', [App\Http\Controllers\Admin\ProductImageController::class, 'destroy'])->name('product-images.destroy');
 });
+
+// Contact Form Routes
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'create'])->name('contact.create');
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');

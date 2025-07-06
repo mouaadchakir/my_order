@@ -39,10 +39,10 @@
                 <label for="image" class="block text-sm font-medium text-gray-700 mb-2">Product Image</label>
                 <input type="file" name="image" id="image" class="w-full px-4 py-3 border border-gray-300 rounded-lg">
                 <p class="text-sm text-gray-500 mt-2">Leave blank to keep the current image.</p>
-                @if($product->image)
+                @if($product->image_path)
                     <div class="mt-4">
                         <p class="font-medium">Current Image:</p>
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-32 h-32 rounded-lg object-cover mt-2">
+                        <img src="{{ asset('storage/' . $product->image_path) }}" alt="{{ $product->name }}" class="w-32 h-32 rounded-lg object-cover mt-2">
                     </div>
                 @endif
             </div>

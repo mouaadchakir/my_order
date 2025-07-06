@@ -29,6 +29,11 @@
                         </div>
                     </div>
                     <a href="{{ route('made-to-measure.create') }}" class="hover:opacity-75">MADE-TO-MEASURE</a>
+                    @auth
+                        @if(auth()->user()->is_admin)
+                            <a href="{{ route('admin.dashboard') }}" class="hover:opacity-75 text-red-500 font-bold">ADMIN DASHBOARD</a>
+                        @endif
+                    @endauth
                     <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
                         <a @mouseover="open = true" href="#" class="flex items-center hover:opacity-75">
                             ABOUT | FAQ
@@ -39,6 +44,7 @@
                             <a href="{{ route('faq') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
                         </div>
                     </div>
+                    <a href="{{ route('contact.create') }}" class="hover:opacity-75">CONTACT</a>
                 </nav>
 
                 {{-- Hamburger Menu (Mobile) --}}
@@ -108,8 +114,14 @@
                 <nav class="flex flex-col space-y-4 text-xs font-medium text-[#4A5568]">
                     <a href="{{ route('products.zellige') }}" class="hover:opacity-75">PRODUCTS ZELLIGE</a>
                     <a href="{{ route('made-to-measure.create') }}" class="hover:opacity-75">MADE-TO-MEASURE</a>
+                    @auth
+                        @if(auth()->user()->is_admin)
+                            <a href="{{ route('admin.dashboard') }}" class="hover:opacity-75 text-red-500 font-bold">ADMIN DASHBOARD</a>
+                        @endif
+                    @endauth
                     <a href="{{ route('about') }}" class="hover:opacity-75">ABOUT US</a>
                     <a href="{{ route('faq') }}" class="hover:opacity-75">FAQ</a>
+                    <a href="{{ route('contact.create') }}" class="hover:opacity-75">CONTACT</a>
                     <div class="pt-4 mt-4 border-t border-gray-200 space-y-2">
                         <a href="#" class="block hover:opacity-75">Morocco | EUR</a>
                         <a href="#" class="block hover:opacity-75">English</a>
@@ -144,7 +156,8 @@
                     <ul class="space-y-2 text-sm">
                         <li><a href="/" class="hover:underline">Home</a></li>
                         <li><a href="{{ route('products.zellige') }}" class="hover:underline">Products Zellige</a></li>
-                        <li><a href="{{ route('made-to-measure.create') }}" class="text-gray-800 hover:text-[#D4AF7A] transition">Made-to-Measure</a></li>
+                        <li><a href="{{ route('products.index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Products</a>
+                  <a href="{{ route('contact.create') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a></li>
                         <li><a href="{{ route('about') }}" class="hover:underline">About Us</a></li>
                     </ul>
                 </div>

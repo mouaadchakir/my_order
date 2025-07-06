@@ -40,6 +40,12 @@
             <p class="text-gray-600 mb-4">View and manage made-to-measure orders.</p>
             <a href="{{ route('admin.requests.index') }}" class="text-blue-500 hover:text-blue-700 font-semibold">Go to Requests &rarr;</a>
         </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <h2 class="text-xl font-semibold mb-2">Manage Contact Messages</h2>
+            <p class="text-gray-600 mb-4">View messages from the contact form.</p>
+            <a href="{{ route('admin.contacts.index') }}" class="text-blue-500 hover:text-blue-700 font-semibold">Go to Messages &rarr;</a>
+        </div>
     </div>
 </div>
 @endsection
