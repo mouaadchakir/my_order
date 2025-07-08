@@ -8,7 +8,7 @@ use App\Models\Category;
 class HomeController extends Controller
 {
     /**
-     * Display the homepage with categories and their products.
+     * Displayc  the homepage with categories and their products.
      *
      * @return \Illuminate\View\View
      */
