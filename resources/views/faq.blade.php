@@ -28,7 +28,7 @@
                 {{-- FAQ Item 3 --}}
                 <div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Can I order custom designs?</h3>
-                    <p class="text-gray-600 leading-relaxed">Absolutely! We specialize in custom orders. You can specify the colors, shapes, and sizes you need for your project. Please visit our <a href="{{ route('made-to-measure') }}" class="text-blue-600 hover:underline">Made-to-Measure</a> page to submit your request, and our design team will work with you to bring your vision to life.</p>
+                    <p class="text-gray-600 leading-relaxed">Absolutely! We specialize in custom orders. You can specify the colors, shapes, and sizes you need for your project. Please visit our <a href="{{ route('made-to-measure.create') }}" class="text-blue-600 hover:underline">Made-to-Measure</a> page to submit your request, and our design team will work with you to bring your vision to life.</p>
                 </div>
 
                 {{-- FAQ Item 4 --}}

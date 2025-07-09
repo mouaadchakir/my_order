@@ -56,27 +56,32 @@
             {{-- Product Grid --}}
             <main class="md:w-3/4">
                 <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {{-- Product 1-9 (placeholders) --}}
-                    @for ($i = 0; $i < 9; $i++)
-                    <div class="text-center group">
-                        <div class="bg-gray-100 p-4 relative">
-                            <img src="https://i.imgur.com/d2L8a3a.jpg" alt="Zellige Tile" class="w-full mb-4 group-hover:scale-105 transition-transform">
-                            <button class="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-gray-200">&#128722;</button>
+                    @forelse ($products as $product)
+                        <div class="text-center group">
+                            <div class="bg-gray-100 p-4 relative">
+                                <a href="#"> {{-- Link to product details page --}}
+                                    @if($product->images->isNotEmpty())
+                                        <img src="{{ asset('storage/' . $product->images->first()->image_path) }}" alt="{{ $product->name }}" class="w-full h-64 object-cover mb-4 group-hover:scale-105 transition-transform">
+                                    @else
+                                        <img src="https://via.placeholder.com/300x400.png/f3f4f6/9ca3af?text=No+Image" alt="No image available" class="w-full h-64 object-cover mb-4">
+                                    @endif
+                                </a>
+                                <button class="absolute top-2 right-2 bg-white p-2 rounded-full shadow hover:bg-gray-200">&#128722;</button>
+                            </div>
+                            <h3 class="font-bold mt-4">{{ $product->name }}</h3>
+                            <p class="text-sm text-gray-500">{{ Str::limit($product->description, 50) }}</p>
+                            <p class="font-semibold mt-2">€{{ number_format($product->price, 2) }}</p>
                         </div>
-                        <h3 class="font-bold mt-4">Zellige Tile {{$i + 1}}</h3>
-                        <p class="text-sm text-gray-500">Handmade Moroccan Tile</p>
-                        <p class="font-semibold mt-2">€ 120.00</p>
-                    </div>
-                    @endfor
+                    @empty
+                        <div class="col-span-full text-center py-12">
+                            <p class="text-lg text-gray-600">No Zellige products found at the moment.</p>
+                        </div>
+                    @endforelse
                 </div>
-                 {{-- Pagination --}}
-                 <div class="mt-12 flex justify-center">
-                    <nav class="flex space-x-2">
-                        <a href="#" class="px-4 py-2 bg-gray-800 text-white">1</a>
-                        <a href="#" class="px-4 py-2 border border-gray-300 hover:bg-gray-200">2</a>
-                        <a href="#" class="px-4 py-2 border border-gray-300 hover:bg-gray-200">3</a>
-                        <a href="#" class="px-4 py-2 border border-gray-300 hover:bg-gray-200">&rarr;</a>
-                    </nav>
+
+                {{-- Pagination --}}
+                <div class="mt-12">
+                    {{ $products->links() }}
                 </div>
             </main>
         </div>
