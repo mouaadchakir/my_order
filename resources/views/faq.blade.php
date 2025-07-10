@@ -8,7 +8,7 @@
             <p class="text-gray-600 mt-2">Home / FAQ</p>
         </div>
     </div>
-
+    
     {{-- Main Content --}}
     <div class="container mx-auto px-4 py-16">
         <div class="max-w-4xl mx-auto">
@@ -24,7 +24,7 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">How are your tiles made?</h3>
                     <p class="text-gray-600 leading-relaxed">Our tiles are handmade by skilled artisans in Fez, Morocco, using traditional methods passed down through generations. The process involves mixing natural clay, shaping it by hand, sun-drying, and then firing it in a kiln. Each tile is then hand-glazed and cut into its final shape, resulting in unique variations in color and texture.</p>
                 </div>
-
+                
                 {{-- FAQ Item 3 --}}
                 <div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Can I order custom designs?</h3>

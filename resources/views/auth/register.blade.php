@@ -5,7 +5,7 @@
     <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
         <h2 class="text-2xl font-bold text-center text-[#4A5568]">Create a New Account</h2>
 
-        <form method="POST" action="{{ route('register.post') }}" class="space-y-6">
+        <form method="POST" action="{{ route('register') }}" class="space-y-6">
             @csrf
 
             <div>

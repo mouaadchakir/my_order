@@ -37,12 +37,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-requests', [MyRequestsController::class, 'index'])->name('my-requests.index');
 });
 
-// Auth Routes
-Route::get('register', [UserController::class, 'create'])->name('register');
-Route::post('register', [UserController::class, 'store'])->name('register.post');
-Route::get('login', [UserController::class, 'login'])->name('login');
-Route::post('login', [UserController::class, 'authenticate'])->name('login.post');
-Route::post('logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
 
