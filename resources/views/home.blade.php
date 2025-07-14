@@ -3,21 +3,19 @@
 @section('styles')
 <style>
     @keyframes marquee {
-        from { transform: translateX(0); }
-        to { transform: translateX(-100%); }
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); } /* Move by half the width because content is duplicated */
     }
-    .marquee-container .animate-marquee {
-        display: inline-block;
+    .animate-marquee {
+        display: inline-block; /* Changed from block to inline-block */
         animation: marquee 40s linear infinite;
-        /* Add padding to the right of the span to create space */
-        padding-right: 2rem; 
     }
 </style>
 @endsection
 
 @section('content')
     {{-- Hero Section --}}
-    <div class="relative h-screen w-full bg-cover bg-center text-white" style="background-image: url('https://images.pexels.com/photos/1388944/pexels-photo-1388944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+    <div class="relative h-screen w-full bg-cover bg-center text-white" style="background-image: url('https://st.hzcdn.com/simgs/788133fd01f549c3_4-8813/home-design.jpg');">
         <div class="absolute inset-0 bg-black opacity-30"></div>
         <div class="relative z-10 flex flex-col items-start justify-end h-full text-left pb-16 md:pb-24 pl-8 md:pl-20">
             <h1 class="text-4xl md:text-6xl font-bold uppercase" style="font-family: serif;">30% DISCOUNT</h1>
@@ -255,28 +253,28 @@
             this.currentIndex = (this.currentIndex - 1 + this.products.length) % this.products.length;
         }
     }">
-        <div class="marquee-container overflow-x-hidden whitespace-nowrap mb-12 relative">
-            <span class="animate-marquee">
-                <span class="mx-4 text-sm text-gray-600">Free Shipping</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Sustainably-Made</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Luxury Materials</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Exclusive Design</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Easy Returns</span>&bull;
-            </span>
-            <span class="animate-marquee">
-                <span class="mx-4 text-sm text-gray-600">Free Shipping</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Sustainably-Made</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Luxury Materials</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Exclusive Design</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Easy Returns</span>&bull;
-            </span>
-            <span class="animate-marquee">
-                <span class="mx-4 text-sm text-gray-600">Free Shipping</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Sustainably-Made</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Luxury Materials</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Exclusive Design</span>&bull;
-                <span class="mx-4 text-sm text-gray-600">Easy Returns</span>&bull;
-            </span>
+        <div class="overflow-x-hidden whitespace-nowrap mb-12">
+            <div class="animate-marquee">
+                <span class="mx-8 text-sm text-gray-600">Free Shipping</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Sustainably-Made</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Luxury Materials</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Exclusive Design</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Easy Returns</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Free Shipping</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Sustainably-Made</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Luxury Materials</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Exclusive Design</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Free Shipping</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Sustainably-Made</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Luxury Materials</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Exclusive Design</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Easy Returns</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Free Shipping</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Sustainably-Made</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Luxury Materials</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Exclusive Design</span>&bull;
+                <span class="mx-8 text-sm text-gray-600">Easy Returns</span>
+            </div>
         </div>
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl font-bold text-gray-800 mb-8" style="font-family: serif;">Custom Made</h>
@@ -305,64 +303,164 @@
         </div>
     </div>
 
-    {{-- About Blacksmithing Section --}}
+    
+
+    {{-- Wholesale Purchase Section --}}
     <div class="bg-[#F8F5F2] py-16">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2 text-gray-700 md:order-2">
-                    <h2 class="text-3xl font-bold mb-4" style="font-family: serif;">About Blacksmithing In Morocco</h2>
-                    <p class="mb-6 leading-relaxed">The journey of Moroccan metalwork doesn't end in the workshop. The items crafted by Moroccan artisans find their way into homes around the world, becoming cherished pieces in both traditional and modern settings [...]</p>
-                    <a href="#" class="border border-gray-400 text-gray-800 py-2 px-6 hover:bg-gray-800 hover:text-white transition duration-300">Read more</a>
-                </div>
-                <div class="md:w-1/2 md:order-1">
-                    <img src="https://i.imgur.com/bX3Ymyh.jpg" alt="Moroccan Blacksmithing" class="w-full">
+            <div class="bg-white p-12 shadow-sm text-center md:text-left">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="md:w-2/3">
+                        <h3 class="text-xl font-semibold uppercase tracking-wider text-gray-800 mb-4">Wholesale Purchase</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Welcome to our tiles art world. Our shop offers you the opportunity to create your own design with colors of YOUR CHOICE that harmonize with the decor of your place. Also we do offer a wholesale program with great discounts. Please do not hesitate to contact us for more information. We are always available to answer.
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center md:justify-end mt-6 md:mt-0">
+                        <a href="#" class="bg-gray-800 text-white py-3 px-8 hover:bg-gray-700 transition duration-300 font-semibold">DISCOVER</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    {{-- Customer Gallery Section --}}
-    <div x-data="{
-        scroll() {
-            const container = this.$refs.galleryContainer;
-            return {
-                left() {
-                    container.scrollBy({ left: -300, behavior: 'smooth' });
-                },
-                right() {
-                    container.scrollBy({ left: 300, behavior: 'smooth' });
-                }
+{{-- Customer Gallery Section --}}
+<div class="bg-[#F8F5F2] py-16" x-data="customerGallery()">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-12" style="font-family: 'Cormorant Garamond', serif;">Customer Gallery</h2>
+        <div class="relative">
+            <div class="overflow-hidden" x-ref="carousel">
+                <div class="flex transition-transform duration-500 ease-in-out" :style="`transform: translateX(-${currentIndex * 100}%)`">
+                    <template x-for="(item, index) in items" :key="index">
+                        <div class="w-full md:w-1/4 flex-shrink-0 px-3">
+                            <div class="bg-white shadow-sm">
+                                <img :src="item.image" :alt="'Customer photo ' + (index + 1)" class="w-full h-80 object-cover">
+                                <div class="p-4 text-center">
+                                    <p class="font-semibold text-gray-800" x-text="item.name"></p>
+                                    <p class="text-sm text-gray-500 mb-2" x-text="item.date"></p>
+                                    <div class="flex justify-center items-center">
+                                        <template x-for="i in 5">
+                                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                            </svg>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            {{-- Controls --}}
+            <button @click="prev()" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 z-10">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button @click="next()" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 z-10">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+
+        {{-- Pagination Dots --}}
+        <div class="flex justify-center space-x-2 mt-8">
+            <template x-for="(page, index) in totalPages" :key="index">
+                <button @click="goToPage(index)" :class="{'bg-gray-800': currentIndex === index, 'bg-gray-300': currentIndex !== index}" class="w-2.5 h-2.5 rounded-full hover:bg-gray-500 transition"></button>
+            </template>
+        </div>
+    </div>
+</div>
+
+<script>
+    function customerGallery() {
+        return {
+            currentIndex: 0,
+            itemsPerPage: 4,
+            items: [
+                { image: 'https://st.hzcdn.com/simgs/dc71f26c01f54999_9-2713/home-design.jpg', name: 'mariaserraaraujo', date: '04 May, 2025' },
+                { image: 'https://st.hzcdn.com/simgs/dc71f26c01f54999_9-2713/home-design.jpg', name: 'john.doe', date: '12 April, 2025' },
+                { image: 'https://st.hzcdn.com/simgs/dc71f26c01f54999_9-2713/home-design.jpg', name: 'anna.smith', date: '28 March, 2025' },
+                { image: 'https://st.hzcdn.com/simgs/dc71f26c01f54999_9-2713/home-design.jpg', name: 'carlos.s', date: '15 March, 2025' },
+                { image: 'https://st.hzcdn.com/simgs/dc71f26c01f54999_9-2713/home-design.jpg', name: 'emily.b', date: '02 Feb, 2025' },
+                { image: 'https://st.hzcdn.com/simgs/dc71f26c01f54999_9-2713/home-design.jpg', name: 'david.g', date: '21 Jan, 2025' },
+                { image: 'https://st.hzcdn.com/simgs/dc71f26c01f54999_9-2713/home-design.jpg', name: 'sophia.l', date: '10 Jan, 2025' },
+                { image: 'https://st.hzcdn.com/simgs/dc71f26c01f54999_9-2713/home-design.jpg', name: 'michael.p', date: '05 Dec, 2024' },
+            ],
+            get totalPages() {
+                return Math.ceil(this.items.length / this.itemsPerPage);
+            },
+            next() {
+                this.currentIndex = (this.currentIndex + 1) % this.totalPages;
+            },
+            prev() {
+                this.currentIndex = (this.currentIndex - 1 + this.totalPages) % this.totalPages;
+            },
+            goToPage(pageIndex) {
+                this.currentIndex = pageIndex;
             }
         }
-    }" class="bg-gray-100 py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-12" style="font-family: serif;">Customer Gallery</h2>
-            <div class="relative">
-                <div x-ref="galleryContainer" class="flex overflow-x-auto space-x-6 pb-4 -mx-4 px-4 scrollbar-hide">
-                    {{-- Gallery Item 1 --}}
-                    <div class="flex-shrink-0 w-72 text-center">
-                        <img src="https://i.imgur.com/d2L8a3a.jpg" alt="Customer photo 1" class="w-full mb-4">
+    }
+</script>
+
+
+    {{-- Rave Reviews/Dispatch/Replies Section --}}
+    <div class="bg-[#5F7464] text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                {{-- Rave reviews --}}
+                <div>
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
                     </div>
-                    {{-- Gallery Item 2 --}}
-                    <div class="flex-shrink-0 w-72 text-center">
-                        <img src="https://i.imgur.com/YqM0i6A.jpg" alt="Customer photo 2" class="w-full mb-4">
-                    </div>
-                    {{-- Gallery Item 3 --}}
-                    <div class="flex-shrink-0 w-72 text-center">
-                        <img src="https://i.imgur.com/O3G2Y2p.jpg" alt="Customer photo 3" class="w-full mb-4">
-                    </div>
-                    {{-- Gallery Item 4 --}}
-                    <div class="flex-shrink-0 w-72 text-center">
-                        <img src="https://i.imgur.com/gJ5R4j8.jpg" alt="Customer photo 4" class="w-full mb-4">
-                    </div>
-                    {{-- Gallery Item 5 --}}
-                    <div class="flex-shrink-0 w-72 text-center">
-                        <img src="https://i.imgur.com/bX3Ymyh.jpg" alt="Customer photo 5" class="w-full mb-4">
-                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Rave reviews</h3>
+                    <p class="text-gray-300">Average review rating is 4.8 or higher</p>
                 </div>
-                <button @click="scroll().left()" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 z-10 hidden md:block">&larr;</button>
-                <button @click="scroll().right()" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 z-10 hidden md:block">&rarr;</button>
+                {{-- Smooth dispatch --}}
+                <div>
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                          <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                          <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v5a1 1 0 001 1h2a1 1 0 001-1V8a1 1 0 00-1-1h-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Smooth dispatch</h3>
+                    <p class="text-gray-300">Has a history of dispatching on time with tracking.</p>
+                </div>
+                {{-- Speedy replies --}}
+                <div>
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Speedy replies</h3>
+                    <p class="text-gray-300">Has a history of replying to messages quickly.</p>
+                </div>
             </div>
         </div>
     </div>
+
+    {{-- About Us Section --}}
+    <div class="bg-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 text-gray-700">
+                    <h2 class="text-3xl font-bold mb-4" style="font-family: serif;">About Us</h2>
+                    <p class="mb-2 leading-relaxed">Welcome to our tiles art world. Our shop offers you the opportunity to create your own design with colors of YOUR CHOICE that harmonize with the decor of your place. Also we do offer a wholesale program with great discounts. Please do not hesitate to contact us for more information. We are always available to answer.</p>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <img src="https://dirim.staticlbi.com/1600xauto/images/biens/1/d356f9da4b0bb0b461e8be129a28c5e9/photo_465adb7ea9fc63317c51cf1894864613.jpg" alt="About us image" class="w-full">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
 @endsection

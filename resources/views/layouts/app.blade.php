@@ -44,7 +44,7 @@
                             <a href="{{ route('faq') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
                         </div>
                     </div>
-                    <a href="{{ route('contact.create') }}" class="hover:opacity-75">CONTACT</a>
+                    
                 </nav>
 
                 {{-- Hamburger Menu (Mobile) --}}
@@ -69,7 +69,9 @@
                     <a href="#" class="hover:opacity-75">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
                     </a>
+                    <a href="{{ route('contact.create') }}" class="hover:opacity-75">CONTACT</a>
                     <div x-data="{ open: false }" @mouseleave="open = false" class="relative">
+                        
                         <button @mouseover="open = true" class="flex items-center hover:opacity-75">
                             Morocco | EUR
                             <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
@@ -177,11 +179,7 @@
                         <a href="#" class="text-gray-600 hover:text-gray-900"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
                     </div>
                 </div>
-                    <p class="text-sm mb-4">Receive updates on new arrivals and special offers.</p>
-                    <form>
-                        <input type="email" placeholder="Your email" class="w-full p-2 border border-gray-300 mb-2">
-                        <button type="submit" class="w-full bg-gray-800 text-white py-2">Subscribe</button>
-                    </form>
+                    
                 </div>
             </div>
 
@@ -189,12 +187,10 @@
                 <p>&copy; 2025 KeshTiles. All Rights Reserved.</p>
                 <div class="flex space-x-4 mt-4 md:mt-0">
                     {{-- Social Media Icons --}}
-                    <a href="#" class="hover:text-gray-900">FB</a>
-                    <a href="#" class="hover:text-gray-900">IG</a>
-                    <a href="#" class="hover:text-gray-900">PI</a>
+                   
                 </div>
                 <div class="mt-4 md:mt-0">
-                    {{-- Payment Icons --}}
+                    {{-- Payment Icons --}} 
                     <span>VISA</span> | <span>MC</span> | <span>AMEX</span> | <span>PAYPAL</span>
                 </div>
             </div>
