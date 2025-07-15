@@ -29,7 +29,7 @@
                     <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                         <div class="flex w-2/5">
                             <div class="w-20">
-                                <img class="h-24" src="{{ asset('storage/' . $details['image']) }}" alt="{{ $details['name'] }}">
+                                                                <img class="h-24" src="{{ asset('storage/' . ($details['image_path'] ?? $details['image'] ?? '')) }}" alt="{{ $details['name'] }}">
                             </div>
                             <div class="flex flex-col justify-between ml-4 flex-grow">
                                 <span class="font-bold text-sm">{{ $details['name'] }}</span>

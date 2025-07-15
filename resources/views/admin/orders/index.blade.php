@@ -30,7 +30,7 @@
                                 <p class="text-gray-600 whitespace-no-wrap">{{ $order->user->email }}</p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">{{ $order->created_at->format('M d, Y') }}</td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">${{ number_format($order->total, 2) }}</td>
+                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">${{ number_format($order->total_amount, 2) }}</td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                     <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>

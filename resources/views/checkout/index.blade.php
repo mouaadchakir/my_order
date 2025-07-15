@@ -70,7 +70,7 @@
                             @php $total += $details['price'] * $details['quantity'] @endphp
                             <div class="flex items-center">
                                 <div class="w-20 h-20 mr-4 flex-shrink-0">
-                                    <img src="{{ asset('storage/' . $details['image']) }}" alt="{{ $details['name'] }}" class="rounded-md object-cover w-full h-full">
+                                    <img src="{{ asset('storage/' . ($details['image_path'] ?? $details['image'] ?? '')) }}" alt="{{ $details['name'] }}" class="rounded-md object-cover w-full h-full">
                                 </div>
                                 <div class="flex-grow">
                                     <p class="font-semibold text-gray-800">{{ $details['name'] }}</p>

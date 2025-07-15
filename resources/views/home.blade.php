@@ -2,6 +2,32 @@
 
 @section('styles')
 <style>
+
+<style>
+        .marquee-container {
+            overflow: hidden;
+            background-color: #4A5568; /* Corresponds to text-[#4A5568] */
+            color: white;
+            padding: 0.5rem 0;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 40s linear infinite;
+        }
+        .marquee-content span {
+            padding: 0 2rem; /* Adds space between repetitions */
+        }
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+
     @keyframes marquee {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); } /* Move by half the width because content is duplicated */
@@ -10,7 +36,10 @@
         display: inline-block; /* Changed from block to inline-block */
         animation: marquee 40s linear infinite;
     }
+
+   
 </style>
+
 @endsection
 
 @section('content')
@@ -253,29 +282,28 @@
             this.currentIndex = (this.currentIndex - 1 + this.products.length) % this.products.length;
         }
     }">
-        <div class="overflow-x-hidden whitespace-nowrap mb-12">
-            <div class="animate-marquee">
-                <span class="mx-8 text-sm text-gray-600">Free Shipping</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Sustainably-Made</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Luxury Materials</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Exclusive Design</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Easy Returns</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Free Shipping</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Sustainably-Made</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Luxury Materials</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Exclusive Design</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Free Shipping</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Sustainably-Made</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Luxury Materials</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Exclusive Design</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Easy Returns</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Free Shipping</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Sustainably-Made</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Luxury Materials</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Exclusive Design</span>&bull;
-                <span class="mx-8 text-sm text-gray-600">Easy Returns</span>
-            </div>
+    <div class="marquee-container text-sm font-medium">
+        <div class="marquee-content">
+            <span>Free Shipping</span>
+            <span>•</span>
+            <span>Sustainably-Made</span>
+            <span>•</span>
+            <span>Luxury Materials</span>
+            <span>•</span>
+            <span>Exclusive Design</span>
+            <span>•</span>
+            <span>Easy Returns</span>
+            <span>Free Shipping</span>
+            <span>•</span>
+            <span>Sustainably-Made</span>
+            <span>•</span>
+            <span>Luxury Materials</span>
+            <span>•</span>
+            <span>Exclusive Design</span>
+            <span>•</span>
+            <span>Easy Returns</span>
         </div>
+    </div>
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl font-bold text-gray-800 mb-8" style="font-family: serif;">Custom Made</h>
             <div class="relative">

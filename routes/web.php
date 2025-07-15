@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -25,6 +26,8 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::get('language/{locale}', [LocalizationController::class, 'setLang'])->name('lang.switch');
+
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
@@ -34,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
     Route::get('/my-requests', [MyRequestsController::class, 'index'])->name('my-requests.index');
 });
 

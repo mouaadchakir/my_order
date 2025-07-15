@@ -56,7 +56,7 @@
                                     </span>
                                 </td>
                                 <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
-                                    <button type="button" class="text-indigo-600 hover:text-indigo-900">View Details</button>
+                                    <a href="{{ route('orders.show', $order->id) }}" class="text-indigo-600 hover:text-indigo-900">View Details</a>
                                 </td>
                             </tr>
                             @endforeach

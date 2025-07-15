@@ -1,0 +1,22 @@
+.marquee-container {
+    overflow: hidden;
+    background-color: #4A5568; /* Corresponds to text-[#4A5568] */
+    color: white;
+    padding: 0.5rem 0;
+    white-space: nowrap;
+}
+.marquee-content {
+    display: inline-block;
+    animation: marquee 40s linear infinite;
+}
+.marquee-content span {
+    padding: 0 2rem; /* Adds space between repetitions */
+}
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

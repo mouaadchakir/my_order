@@ -16,5 +16,19 @@ class OrderController extends Controller
 
         return view('orders.index', compact('orders'));
     }
-    //
+    /**
+     * Display the specified resource.
+     */
+    public function show(\App\Models\Order $order)
+    {
+        // Ensure the authenticated user owns the order
+        if (Auth::id() !== $order->user_id) {
+            abort(403);
+        }
+
+        // Eager load the items and their products
+        $order->load('items.product');
+
+        return view('orders.show', compact('order'));
+    }
 }
