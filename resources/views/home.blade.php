@@ -49,7 +49,7 @@
         <div class="relative z-10 flex flex-col items-start justify-end h-full text-left pb-16 md:pb-24 pl-8 md:pl-20">
             <h1 class="text-4xl md:text-6xl font-bold uppercase" style="font-family: serif;">30% DISCOUNT</h1>
             <p class="text-lg md:text-xl mt-2 max-w-md">Unique Handmade Moroccan Tiles Arts</p>
-            <a href="#" class="mt-6 inline-block border-2 border-white text-white py-2 px-8 hover:bg-white hover:text-black transition duration-300 font-semibold">Discover</a>
+            <a href="{{ route('products.zellige') }}" class="mt-6 inline-block border-2 border-white text-white py-2 px-8 hover:bg-white hover:text-black transition duration-300 font-semibold">Discover</a>
         </div>
     </div>
 
@@ -61,7 +61,7 @@
             <div class="flex justify-between items-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-800">Shop By Category</h2>
                 <div class="flex items-center space-x-2">
-                    <a href="#" class="border border-gray-400 text-gray-800 py-2 px-6 hover:bg-gray-800 hover:text-white transition hidden sm:block">Discover All</a>
+                    <a href="{{ route('products.zellige') }}" class="border border-gray-400 text-gray-800 py-2 px-6 hover:bg-gray-800 hover:text-white transition hidden sm:block">Discover All</a>
                     <button @click="scroll('left')" class="border border-gray-300 p-3 hover:bg-gray-800 hover:text-white transition">&lt;</button>
                     <button @click="scroll('right')" class="border border-gray-300 p-3 hover:bg-gray-800 hover:text-white transition">&gt;</button>
                 </div>
@@ -85,7 +85,7 @@
                                         <a href="#" class="block mb-4 h-80 bg-gray-100">
                                             <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                                         </a>
-                                        <a href="#" class="inline-block border border-gray-800 text-gray-800 py-2 px-6 hover:bg-gray-800 hover:text-white transition">DISCOVER</a>
+                                        <a href="{{ route('products.zellige') }}" class="inline-block border border-gray-800 text-gray-800 py-2 px-6 hover:bg-gray-800 hover:text-white transition">DISCOVER</a>
                                     </div>
                                 </div>
                             @endif
@@ -345,7 +345,7 @@
                         </p>
                     </div>
                     <div class="md:w-1/3 flex justify-center md:justify-end mt-6 md:mt-0">
-                        <a href="#" class="bg-gray-800 text-white py-3 px-8 hover:bg-gray-700 transition duration-300 font-semibold">DISCOVER</a>
+                        <a href="{{ route('products.zellige') }}" class="bg-gray-800 text-white py-3 px-8 hover:bg-gray-700 transition duration-300 font-semibold">DISCOVER</a>
                     </div>
                 </div>
             </div>

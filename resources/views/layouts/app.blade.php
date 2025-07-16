@@ -182,7 +182,7 @@
                     <h3 class="font-semibold mb-4 uppercase tracking-wider text-sm">Quick Access</h3>
                     <ul class="space-y-3 text-sm text-gray-600">
                         <li><a href="/" class="hover:underline">Home</a></li>
-                        <li><a href="#" class="hover:underline">All collections</a></li>
+                        <li><a href="{{ route('products.zellige') }}" class="hover:underline">All collections</a></li>
                         <li><a href="{{ route('about') }}" class="hover:underline">About</a></li>
                         <li><a href="#" class="hover:underline">Blogs</a></li>
                     </ul>
