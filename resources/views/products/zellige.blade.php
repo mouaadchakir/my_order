@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container mx-auto px-4 py-16">
         <div class="flex flex-col md:flex-row gap-12">
             {{-- Filters Sidebar --}}

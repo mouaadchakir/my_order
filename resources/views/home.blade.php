@@ -100,6 +100,7 @@
         if (typeof categoryCarousel !== 'function') {
             function categoryCarousel() {
                 return {
+
                     scroll(direction) {
                         const container = this.$refs.container;
                         if (!container || !container.querySelector('.group')) return;

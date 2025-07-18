@@ -33,7 +33,7 @@ class CheckoutController extends Controller
 
         DB::beginTransaction();
 
-        try {
+        try {-
             $total = 0;
             foreach ($cart as $id => $details) {
                 $total += $details['price'] * $details['quantity'];

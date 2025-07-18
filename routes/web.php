@@ -18,6 +18,7 @@ use App\Http\Controllers\MadeToMeasureController;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/products/zellige', [App\Http\Controllers\ProductController::class, 'zelligeIndex'])->name('products.zellige');
+Route::get('/search', [ProductController::class, 'search'])->name('product.search');
 
 Route::get('/made-to-measure', [MadeToMeasureController::class, 'create'])->name('made-to-measure.create');
 Route::post('/made-to-measure', [MadeToMeasureController::class, 'store'])->name('made-to-measure.store');
