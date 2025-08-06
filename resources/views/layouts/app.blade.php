@@ -92,7 +92,7 @@
                 {{-- Right Side (Desktop) --}}
                 <div class="hidden md:flex justify-end items-center space-x-4 text-xs font-medium">
                                         <form action="{{ route('product.search') }}" method="GET" class="relative flex items-center">
-                        <input type="text" name="query" placeholder="Search..." class="w-32 lg:w-40 bg-gray-100 rounded-full px-4 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-gray-300 transition-all duration-300 ease-in-out" value="{{ request('query') }}">
+                                            <input type="text" name="query" placeholder="Search..." class="w-32 lg:w-40 bg-gray-100 rounded-full px-4 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-gray-300 transition-all duration-300 ease-in-out" value="{{ request('query') }}">
                         <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
                         </button>
