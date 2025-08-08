@@ -3,6 +3,7 @@
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold text-gray-800 mb-6">Contact Form Messages</h1>
+   
 
     @if($contacts->isEmpty())
         <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
@@ -41,6 +42,12 @@
                     @endforeach
                 </tbody>
             </table>
+            
+        </div>
+        <div class="mt-8 text-right">
+            <a href="{{ route('admin.dashboard') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+                &larr; Back to Admin Dashboard
+            </a>
         </div>
 
         <div class="mt-6">

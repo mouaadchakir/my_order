@@ -75,4 +75,4 @@ $maxWidth = [
     >
         {{ $slot }}
     </div>
-</div> 
+</div>

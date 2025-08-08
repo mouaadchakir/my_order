@@ -42,6 +42,11 @@
                 </tbody>
             </table>
         </div>
+        <div class="mt-8 text-right">
+            <a href="{{ route('admin.dashboard') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+                &larr; Back to Admin Dashboard
+            </a>
+        </div>
 
         <div class="mt-6">
             {{ $orders->links() }}
