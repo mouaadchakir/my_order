@@ -10,20 +10,29 @@
 
             <div>
                 <label for="name" class="text-sm font-medium text-gray-700">Name</label>
-                <input id="name" name="name" type="text" required autofocus autocomplete="name"
-                       class="block w-full px-3 py-2 mt-1 text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                <input id="name" name="name" type="text" required autofocus autocomplete="name" value="{{ old('name') }}"
+                       class="block w-full px-3 py-2 mt-1 text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 @error('name') border-red-500 @enderror">
+                @error('name')
+                    <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
             </div>
 
             <div>
                 <label for="email" class="text-sm font-medium text-gray-700">Email Address</label>
-                <input id="email" name="email" type="email" required autocomplete="username"
-                       class="block w-full px-3 py-2 mt-1 text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                <input id="email" name="email" type="email" required autocomplete="username" value="{{ old('email') }}"
+                       class="block w-full px-3 py-2 mt-1 text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 @error('email') border-red-500 @enderror">
+                @error('email')
+                    <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
             </div>
 
             <div>
                 <label for="password" class="text-sm font-medium text-gray-700">Password</label>
-                <input id="password" name="password" type="password" required autocomplete="new-password"
-                       class="block w-full px-3 py-2 mt-1 text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                <input id="password" name="password" type="password" required autocomplete="new-password"
+                       class="block w-full px-3 py-2 mt-1 text-gray-900 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 @error('password') border-red-500 @enderror">
+                @error('password')
+                    <span class="text-red-500 text-xs mt-1">{{ $message }}</span>
+                @enderror
             </div>
 
             <div>

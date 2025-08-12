@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
@@ -32,6 +33,12 @@ Route::get('language/{locale}', [LocalizationController::class, 'setLang'])->nam
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
+
+// Custom Email Verification Routes
+Route::get('/verify-code', [App\Http\Controllers\Auth\VerificationController::class, 'show'])->name('custom.verification.form');
+Route::post('/verify-code', [App\Http\Controllers\Auth\VerificationController::class, 'verify'])->name('custom.verification.verify');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
