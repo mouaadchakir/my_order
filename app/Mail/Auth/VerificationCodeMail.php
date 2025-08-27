@@ -36,15 +36,15 @@ class VerificationCodeMail extends Mailable
         );
     }
 
-    /**
+    /** 
      * Get the message content definition.
-     */
+     */ 
     public function content(): Content
     {
         return new Content(
             view: 'emails.verification-code',
             with: [
-                                'user' => $this->user,
+                'user' => $this->user,
                 'code' => $this->code,
             ],
         );

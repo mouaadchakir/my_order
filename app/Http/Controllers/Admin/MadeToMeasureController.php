@@ -50,7 +50,7 @@ class MadeToMeasureController extends Controller
         $request = MadeToMeasureRequest::findOrFail($id);
         return view('admin.made-to-measure.show', ['request' => $request]);
     }
-
+    
     /**
      * Update the status of the specified resource in storage.
      *
