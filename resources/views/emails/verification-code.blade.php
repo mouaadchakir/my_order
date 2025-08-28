@@ -54,7 +54,7 @@
             <h2>Verify Your Email Address</h2>
         </div>
         <div class="content">
-            <p>Hello {{ $user->name}},</p>
+            <p>Hello,</p>
             <p>Thank you for registering. Please use the following verification code to complete your registration:</p>
             <div class="code">{{ $code }}</div>
             <p>This code will expire in 10 minutes. If you did not request this, please ignore this email.</p>

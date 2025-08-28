@@ -6,7 +6,7 @@
         <h2 class="text-2xl font-bold text-center text-gray-800">Email Verification</h2>
         <p class="mt-2 text-center text-gray-600">We've sent a 6-digit code to your email address. Please enter it below to verify your account.</p>
 
-        <form method="POST" action="{{ route('custom.verification.verify') }}" class="mt-6">
+        <form method="POST" action="{{ route('verification.verify_code') }}" class="mt-6">
             @csrf
 
             <div>

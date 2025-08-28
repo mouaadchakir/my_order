@@ -17,13 +17,11 @@ class VerificationCodeMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $user;
-    public string $code;
+    public $verificationCode;
 
-    public function __construct($user, string $code)
+    public function __construct($verificationCode)
     {
-        $this->user = $user;
-        $this->code = $code;
+        $this->verificationCode = $verificationCode;
     }
 
     /**
@@ -36,16 +34,15 @@ class VerificationCodeMail extends Mailable
         );
     }
 
-    /** 
+    /**
      * Get the message content definition.
-     */ 
+     */
     public function content(): Content
     {
         return new Content(
             view: 'emails.verification-code',
             with: [
-                'user' => $this->user,
-                'code' => $this->code,
+                'code' => $this->verificationCode,
             ],
         );
     }

@@ -34,11 +34,6 @@ Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
 
-// Custom Email Verification Routes
-Route::get('/verify-code', [App\Http\Controllers\Auth\VerificationController::class, 'show'])->name('custom.verification.form');
-Route::post('/verify-code', [App\Http\Controllers\Auth\VerificationController::class, 'verify'])->name('custom.verification.verify');
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -96,3 +91,5 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 // Contact Form Routes
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'create'])->name('contact.create');
 Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+
+require __DIR__.'/auth.php';

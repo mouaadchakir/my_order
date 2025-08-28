@@ -51,11 +51,11 @@ class RegisteredUserController extends Controller
         $user->save();
 
                 // Send email with the verification code
-        Mail::to($user->email)->send(new VerificationCodeMail($user, $verificationCode));
+        Mail::to($user->email)->send(new VerificationCodeMail($verificationCode));
 
         // Redirect to the verification page
         $request->session()->put('user_id_for_verification', $user->id);
         
-        return to_route('custom.verification.form');
+        return redirect()->route('verification.code_form');
     }
 }

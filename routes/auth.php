@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -16,6 +17,10 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
+
+    // Custom Verification Code Routes
+    Route::get('verify-code', [VerificationController::class, 'show'])->name('verification.code_form');
+    Route::post('verify-code', [VerificationController::class, 'verify'])->name('verification.verify_code');
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
